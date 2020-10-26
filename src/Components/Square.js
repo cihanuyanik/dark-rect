@@ -27,7 +27,7 @@ const Square = (props) => {
       const nextTime = selectSquareNextTime(store.getState());
       const nextColor = selectSquareNextColor(store.getState());
       const currentTime = GlobalTimer.instance().time();
-      if (currentTime >= 300 && GlobalTimer.instance().isCounting()) {
+      if (currentTime >= 1800 && GlobalTimer.instance().isCounting()) {
         dispatch(squareStop());
         dispatch(resultDialogShow());
       }

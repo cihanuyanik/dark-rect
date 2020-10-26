@@ -15,6 +15,7 @@ import {
   selectResultDialogOpen,
 } from "../ReduxStore/resultDialogSlice";
 import { Typography } from "@material-ui/core";
+import GlobalTimer from "../GlobalTimer";
 
 export default function ResultDialog() {
   const open = useSelector(selectResultDialogOpen);
@@ -32,6 +33,9 @@ export default function ResultDialog() {
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{"Alıştırma Sonucu"}</DialogTitle>
       <DialogContent>
+        <Typography>{`Süre: ${Math.round(
+          GlobalTimer.instance().time() / 60
+        )}`}</Typography>
         <Typography>{`Toplam gösterilen siyah: ${displayedBlackCount}`}</Typography>
         <Typography>{`Doğru cevaplanan siyah: ${correctBlackSeen}`}</Typography>
         <Typography>{`Siyah olmadığı halde siyah denilen: ${wrongBlackSeen}`}</Typography>
