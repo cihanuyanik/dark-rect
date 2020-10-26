@@ -27,7 +27,7 @@ const Square = (props) => {
       const nextTime = selectSquareNextTime(store.getState());
       const nextColor = selectSquareNextColor(store.getState());
       const currentTime = GlobalTimer.instance().time();
-      if (currentTime >= 60 && GlobalTimer.instance().isCounting()) {
+      if (currentTime >= 300 && GlobalTimer.instance().isCounting()) {
         dispatch(squareStop());
         dispatch(resultDialogShow());
       }
@@ -47,25 +47,7 @@ const Square = (props) => {
     }, 250);
   }, [dispatch]);
 
-  let squareClass;
-  switch (color) {
-    case "white":
-      squareClass = styles.white;
-      break;
-    case "gray":
-      squareClass = styles.gray;
-      break;
-    case "black":
-      squareClass = styles.black;
-      break;
-    default:
-      squareClass = styles.white;
-  }
-
   return started ? color === "black" ? <BlackBox /> : <GrayBox /> : "";
-  // <GrayBox></GrayBox>
-  // <BlackBox></BlackBox>
-  // <div className={squareClass} style={{ width: 150, height: 150 }}></div>
 };
 
 Square.propTypes = {};

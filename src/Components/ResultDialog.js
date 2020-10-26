@@ -35,9 +35,9 @@ export default function ResultDialog() {
         <Typography>{`Toplam gösterilen siyah: ${displayedBlackCount}`}</Typography>
         <Typography>{`Doğru cevaplanan siyah: ${correctBlackSeen}`}</Typography>
         <Typography>{`Siyah olmadığı halde siyah denilen: ${wrongBlackSeen}`}</Typography>
-        <Typography>{`Başarı oranı: %${
-          100 * Math.round(correctBlackSeen / displayedBlackCount)
-        }`}</Typography>
+        <Typography>{`Başarı oranı: %${Math.round(
+          100 * (correctBlackSeen / displayedBlackCount)
+        )}`}</Typography>
       </DialogContent>
     </Dialog>
   );

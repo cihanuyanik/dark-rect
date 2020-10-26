@@ -5,7 +5,6 @@ const GrayBox = () => {
   useEffect(() => {
     const timerId = setTimeout(
       () => {
-        console.log("ADASDSAD");
         setOn(!on);
       },
       on ? 1500 : 500
