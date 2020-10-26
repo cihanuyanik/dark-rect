@@ -7,34 +7,34 @@ import { RiRestartLine } from "react-icons/ri";
 import classnames from "classnames";
 import { MdGrade } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import {
-  initExerciseSet,
-  nextFigureSet,
-  restart,
-  selectTotalAnswer,
-  selectWrongAnsweredFigureSets,
-} from "../ReduxStore/matchSlice";
-import store from "../ReduxStore/store";
-import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
+// import {
+//   initExerciseSet,
+//   nextFigureSet,
+//   restart,
+//   selectTotalAnswer,
+//   selectWrongAnsweredFigureSets,
+// } from "../ReduxStore/matchSlice";
+// import store from "../ReduxStore/store";
+// import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
 
 const ApplicationBar = () => {
   const dispatch = useDispatch();
   const onStartClick = () => {
-    dispatch(restart());
-    dispatch(initExerciseSet());
-    dispatch(nextFigureSet());
+    // dispatch(restart());
+    // dispatch(initExerciseSet());
+    // dispatch(nextFigureSet());
   };
 
   const onFinishClick = () => {
-    const totalAnswer = selectTotalAnswer(store.getState());
-    const wrongOnes = selectWrongAnsweredFigureSets(store.getState());
-    console.log(totalAnswer);
-    console.log(wrongOnes);
-    console.log(
-      "Success Rate:",
-      (totalAnswer - wrongOnes.length) / totalAnswer
-    );
-    dispatch(resultDialogShow());
+    // const totalAnswer = selectTotalAnswer(store.getState());
+    // const wrongOnes = selectWrongAnsweredFigureSets(store.getState());
+    // console.log(totalAnswer);
+    // console.log(wrongOnes);
+    // console.log(
+    //   "Success Rate:",
+    //   (totalAnswer - wrongOnes.length) / totalAnswer
+    // );
+    // dispatch(resultDialogShow());
   };
   return (
     <TableLayout
@@ -69,7 +69,6 @@ const ApplicationBar = () => {
       ]}
     />
   );
-  // return <div className={styles.container}></div>;
 };
 
 export default ApplicationBar;

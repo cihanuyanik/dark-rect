@@ -6,20 +6,20 @@ import ImgGreen from "./green.png";
 import ImgRed from "./red.png";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";
-import { answerFigureSet, nextFigureSet } from "../ReduxStore/matchSlice";
+// import { answerFigureSet, nextFigureSet } from "../ReduxStore/matchSlice";
 
 const ActionButtons = (props) => {
   const [imgSize, setImgSize] = useState(0);
   const dispatch = useDispatch();
 
   const onGreen = () => {
-    dispatch(answerFigureSet(1));
-    dispatch(nextFigureSet());
+    // dispatch(answerFigureSet(1));
+    // dispatch(nextFigureSet());
   };
 
   const onRed = () => {
-    dispatch(answerFigureSet(0));
-    dispatch(nextFigureSet());
+    // dispatch(answerFigureSet(0));
+    // dispatch(nextFigureSet());
   };
 
   return (
