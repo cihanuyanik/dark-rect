@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/dark-rect/static/css/main.21e3512c.chunk.css",
+    "main.js": "/dark-rect/static/js/main.1cb7c89a.chunk.js",
+    "main.js.map": "/dark-rect/static/js/main.1cb7c89a.chunk.js.map",
+    "runtime-main.js": "/dark-rect/static/js/runtime-main.500cb57e.js",
+    "runtime-main.js.map": "/dark-rect/static/js/runtime-main.500cb57e.js.map",
+    "static/js/2.620bc810.chunk.js": "/dark-rect/static/js/2.620bc810.chunk.js",
+    "static/js/2.620bc810.chunk.js.map": "/dark-rect/static/js/2.620bc810.chunk.js.map",
+    "index.html": "/dark-rect/index.html",
+    "static/css/main.21e3512c.chunk.css.map": "/dark-rect/static/css/main.21e3512c.chunk.css.map",
+    "static/js/2.620bc810.chunk.js.LICENSE.txt": "/dark-rect/static/js/2.620bc810.chunk.js.LICENSE.txt",
+    "static/media/logo.db36153e.svg": "/dark-rect/static/media/logo.db36153e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.500cb57e.js",
+    "static/js/2.620bc810.chunk.js",
+    "static/css/main.21e3512c.chunk.css",
+    "static/js/main.1cb7c89a.chunk.js"
+  ]
+}
