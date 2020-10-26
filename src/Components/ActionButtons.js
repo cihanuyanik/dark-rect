@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import styles from "./ActionButtons.module.css";
-import PropTypes from "prop-types";
 import TableLayout, { ColumnDefinition, RowDefinition } from "./TableLayout";
 import ImgGreen from "./green.png";
 import ImgRed from "./red.png";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";
-// import { answerFigureSet, nextFigureSet } from "../ReduxStore/matchSlice";
+import { blackSeen } from "../ReduxStore/squareSlice";
 
 const ActionButtons = (props) => {
   const [imgSize, setImgSize] = useState(0);
   const dispatch = useDispatch();
 
   const onGreen = () => {
-    // dispatch(answerFigureSet(1));
-    // dispatch(nextFigureSet());
+    dispatch(blackSeen());
   };
 
-  const onRed = () => {
-    // dispatch(answerFigureSet(0));
-    // dispatch(nextFigureSet());
-  };
+  const onRed = () => {};
 
   return (
     <TableLayout
@@ -44,6 +39,7 @@ const ActionButtons = (props) => {
               height={imgSize}
               width={imgSize}
               onClick={onRed}
+              alt={"red"}
             />
             ,
           </div>,
@@ -53,6 +49,7 @@ const ActionButtons = (props) => {
               height={imgSize}
               width={imgSize}
               onClick={onGreen}
+              alt={"green"}
             />
             ,
           </div>,

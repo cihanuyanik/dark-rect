@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./ApplicationBar.module.css";
 
 import TableLayout, { ColumnDefinition, RowDefinition } from "./TableLayout";
@@ -8,16 +8,7 @@ import classnames from "classnames";
 import { MdGrade } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { squareRestart, squareStop } from "../ReduxStore/squareSlice";
-import GlobalTimer from "../GlobalTimer";
-// import {
-//   initExerciseSet,
-//   nextFigureSet,
-//   restart,
-//   selectTotalAnswer,
-//   selectWrongAnsweredFigureSets,
-// } from "../ReduxStore/matchSlice";
-// import store from "../ReduxStore/store";
-// import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
+import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
 
 const ApplicationBar = () => {
   const dispatch = useDispatch();
@@ -27,15 +18,7 @@ const ApplicationBar = () => {
 
   const onFinishClick = () => {
     dispatch(squareStop());
-    // const totalAnswer = selectTotalAnswer(store.getState());
-    // const wrongOnes = selectWrongAnsweredFigureSets(store.getState());
-    // console.log(totalAnswer);
-    // console.log(wrongOnes);
-    // console.log(
-    //   "Success Rate:",
-    //   (totalAnswer - wrongOnes.length) / totalAnswer
-    // );
-    // dispatch(resultDialogShow());
+    dispatch(resultDialogShow());
   };
   return (
     <TableLayout

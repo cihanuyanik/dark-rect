@@ -25,6 +25,10 @@ class GlobalTimer {
   time() {
     return this._timer.second;
   }
+
+  isCounting() {
+    return this._timer.timerId !== null;
+  }
 }
 
 export default GlobalTimer;

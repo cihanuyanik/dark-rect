@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./Square.module.css";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   goBlack,
   goGray,
-  goNextColor,
   goWhite,
   selectSquareColor,
   selectSquareNextColor,
   selectSquareNextTime,
+  squareStop,
 } from "../ReduxStore/squareSlice";
-import Timer from "../Timer";
 import GlobalTimer from "../GlobalTimer";
 import store from "../ReduxStore/store";
+import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
 const Square = (props) => {
   const color = useSelector(selectSquareColor);
-  // const nextColor = useSelector(selectSquareNextColor);
-  // const nextTime = useSelector(selectSquareNextTime);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setInterval(() => {
       const nextTime = selectSquareNextTime(store.getState());
       const nextColor = selectSquareNextColor(store.getState());
+      const currentTime = GlobalTimer.instance().time();
+      if (currentTime >= 60 && GlobalTimer.instance().isCounting()) {
+        dispatch(squareStop());
+        dispatch(resultDialogShow());
+      }
 
-      if (nextTime <= GlobalTimer.instance().time()) {
+      if (nextTime <= currentTime) {
         switch (nextColor) {
           case "white":
             dispatch(goWhite());
@@ -35,12 +37,13 @@ const Square = (props) => {
             break;
           case "black":
             dispatch(goBlack());
-
+            break;
+          default:
             break;
         }
       }
     }, 1000);
-  }, []);
+  }, [dispatch]);
 
   let squareClass;
   switch (color) {

@@ -6,7 +6,13 @@ const getInitialState = () => {
   return {
     color: "white",
     nextColor: "gray",
-    nextTime: 3,
+    nextTime: 2,
+    totalDisplayCount: 0,
+    totalDisplayedBlack: 0,
+    totalBlackSeenAnswer: 0,
+    expectedBlackSeen: 0,
+    correctBlackSeenAnswer: 0,
+    wrongBlackSeenAnswer: 0,
   };
 };
 
@@ -29,6 +35,8 @@ export const squareSlice = createSlice({
     },
     goGray: (state, action) => {
       state.color = "gray";
+      state.expectedBlackSeen = 0;
+      state.totalDisplayCount++;
       if (randomInt(0, 2) === 1) {
         // go black
         state.nextColor = "black";
@@ -43,6 +51,16 @@ export const squareSlice = createSlice({
       state.color = "black";
       state.nextColor = "white";
       state.nextTime = GlobalTimer.instance().time() + 1;
+      state.expectedBlackSeen = 1;
+      state.totalDisplayedBlack++;
+    },
+
+    blackSeen: (state, action) => {
+      if (state.expectedBlackSeen === 1) {
+        state.correctBlackSeenAnswer++;
+      } else {
+        state.wrongBlackSeenAnswer++;
+      }
     },
   },
 });
@@ -53,9 +71,19 @@ export const {
   goWhite,
   goGray,
   goBlack,
+  blackSeen,
 } = squareSlice.actions;
 
 export const selectSquareColor = (state) => state.square.color;
 export const selectSquareNextColor = (state) => state.square.nextColor;
 export const selectSquareNextTime = (state) => state.square.nextTime;
+export const selectTotalDisplayCount = (state) =>
+  state.square.totalDisplayCount;
+export const selectTotalDisplayedBlack = (state) =>
+  state.square.totalDisplayedBlack;
+export const selectCorrectBlackSeenAnswer = (state) =>
+  state.square.correctBlackSeenAnswer;
+export const selectWrongBlackSeenAnswer = (state) =>
+  state.square.wrongBlackSeenAnswer;
+
 export default squareSlice.reducer;
