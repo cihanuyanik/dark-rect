@@ -33,7 +33,7 @@ export default function ResultDialog() {
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{"Alıştırma Sonucu"}</DialogTitle>
       <DialogContent>
-        <Typography>{`Süre: ${Math.round(
+        <Typography>{`Alıştırma Süresi: ${Math.round(
           GlobalTimer.instance().time() / 60
         )}`}</Typography>
         <Typography>{`Toplam gösterilen siyah: ${displayedBlackCount}`}</Typography>
