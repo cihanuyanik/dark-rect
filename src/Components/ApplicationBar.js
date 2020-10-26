@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ApplicationBar.module.css";
 
 import TableLayout, { ColumnDefinition, RowDefinition } from "./TableLayout";
@@ -7,6 +7,8 @@ import { RiRestartLine } from "react-icons/ri";
 import classnames from "classnames";
 import { MdGrade } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { squareRestart, squareStop } from "../ReduxStore/squareSlice";
+import GlobalTimer from "../GlobalTimer";
 // import {
 //   initExerciseSet,
 //   nextFigureSet,
@@ -20,12 +22,11 @@ import { useDispatch } from "react-redux";
 const ApplicationBar = () => {
   const dispatch = useDispatch();
   const onStartClick = () => {
-    // dispatch(restart());
-    // dispatch(initExerciseSet());
-    // dispatch(nextFigureSet());
+    dispatch(squareRestart());
   };
 
   const onFinishClick = () => {
+    dispatch(squareStop());
     // const totalAnswer = selectTotalAnswer(store.getState());
     // const wrongOnes = selectWrongAnsweredFigureSets(store.getState());
     // console.log(totalAnswer);
@@ -54,9 +55,7 @@ const ApplicationBar = () => {
           >
             <Typography>Başla</Typography>
           </Button>,
-          <Typography className={styles.appBarTitle}>
-            Şekil Eşleştirme
-          </Typography>,
+          <Typography className={styles.appBarTitle}>Kararan Kare</Typography>,
           <Button
             variant={"contained"}
             startIcon={<MdGrade />}

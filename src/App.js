@@ -4,6 +4,7 @@ import TableLayout, {ColumnDefinition, RowDefinition} from "./Components/TableLa
 import ApplicationBar from "./Components/ApplicationBar";
 import ActionButtons from "./Components/ActionButtons";
 import ResultDialog from "./Components/ResultDialog";
+import Square from "./Components/Square";
 
 function App() {
   return (
@@ -12,14 +13,12 @@ function App() {
         rows={[
           new RowDefinition({ height: 50 }),
           new RowDefinition(),
-          new RowDefinition(),
           new RowDefinition({ height: 75 }),
         ]}
         columns={[new ColumnDefinition()]}
         cells={[
           [<ApplicationBar />],
-          [""],
-          [""],
+          [<Square/>],
           [<ActionButtons />],
         ]}
       />
