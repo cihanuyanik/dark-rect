@@ -7,9 +7,9 @@ class Timer {
     }
     this.second = 0;
     this.timerId = setInterval(() => {
-      this.second++;
+      this.second += 0.5;
       if (timeOutFunc !== null) timeOutFunc(this.second);
-    }, 1000);
+    }, 500);
   }
 
   stop() {

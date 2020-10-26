@@ -1,15 +1,15 @@
 
 .white {
-    transition: background-color .25s;
+    transition: background-color .125s;
     background-color: whitesmoke;
 }
 
 .gray {
-    transition: background-color .25s;
+    transition: background-color .125s;
     background-color: #999999;
 }
 
 .black {
-    transition: background-color .25s;
+    transition: background-color .125s;
     background-color: #4e4e4e;
 }

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "../ReduxStore/store";
 import {
   selectCorrectBlackSeenAnswer,
-  selectTotalDisplayCount,
   selectTotalDisplayedBlack,
   selectWrongBlackSeenAnswer,
 } from "../ReduxStore/squareSlice";
@@ -25,7 +24,6 @@ export default function ResultDialog() {
     dispatch(resultDialogClose());
   };
 
-  const displayCount = selectTotalDisplayCount(store.getState());
   const displayedBlackCount = selectTotalDisplayedBlack(store.getState());
   const correctBlackSeen = selectCorrectBlackSeenAnswer(store.getState());
   const wrongBlackSeen = selectWrongBlackSeenAnswer(store.getState());
@@ -34,10 +32,12 @@ export default function ResultDialog() {
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{"Alıştırma Sonucu"}</DialogTitle>
       <DialogContent>
-        <Typography>{`Toplam gösterilen şekil: ${displayCount}`}</Typography>
         <Typography>{`Toplam gösterilen siyah: ${displayedBlackCount}`}</Typography>
         <Typography>{`Doğru cevaplanan siyah: ${correctBlackSeen}`}</Typography>
         <Typography>{`Siyah olmadığı halde siyah denilen: ${wrongBlackSeen}`}</Typography>
+        <Typography>{`Başarı oranı: %${
+          100 * Math.round(correctBlackSeen / displayedBlackCount)
+        }`}</Typography>
       </DialogContent>
     </Dialog>
   );

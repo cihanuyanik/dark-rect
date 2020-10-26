@@ -8,17 +8,22 @@ import {
   selectSquareColor,
   selectSquareNextColor,
   selectSquareNextTime,
+  selectSquareStarted,
   squareStop,
 } from "../ReduxStore/squareSlice";
 import GlobalTimer from "../GlobalTimer";
 import store from "../ReduxStore/store";
 import { resultDialogShow } from "../ReduxStore/resultDialogSlice";
+import GrayBox from "./GrayBox";
+import BlackBox from "./BlackBox";
 const Square = (props) => {
+  const started = useSelector(selectSquareStarted);
   const color = useSelector(selectSquareColor);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setInterval(() => {
+      // console.log("Square timeout");
       const nextTime = selectSquareNextTime(store.getState());
       const nextColor = selectSquareNextColor(store.getState());
       const currentTime = GlobalTimer.instance().time();
@@ -29,9 +34,6 @@ const Square = (props) => {
 
       if (nextTime <= currentTime) {
         switch (nextColor) {
-          case "white":
-            dispatch(goWhite());
-            break;
           case "gray":
             dispatch(goGray());
             break;
@@ -42,7 +44,7 @@ const Square = (props) => {
             break;
         }
       }
-    }, 1000);
+    }, 250);
   }, [dispatch]);
 
   let squareClass;
@@ -60,9 +62,10 @@ const Square = (props) => {
       squareClass = styles.white;
   }
 
-  return (
-    <div className={squareClass} style={{ width: 150, height: 150 }}></div>
-  );
+  return started ? color === "black" ? <BlackBox /> : <GrayBox /> : "";
+  // <GrayBox></GrayBox>
+  // <BlackBox></BlackBox>
+  // <div className={squareClass} style={{ width: 150, height: 150 }}></div>
 };
 
 Square.propTypes = {};
