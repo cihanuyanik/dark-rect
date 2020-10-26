@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import styles from "./Square.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   goBlack,
   goGray,
-  goWhite,
   selectSquareColor,
   selectSquareNextColor,
   selectSquareNextTime,

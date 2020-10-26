@@ -35,7 +35,7 @@ export default function ResultDialog() {
       <DialogContent>
         <Typography>{`Alıştırma Süresi: ${Math.round(
           GlobalTimer.instance().time() / 60
-        )}`}</Typography>
+        )} dk.`}</Typography>
         <Typography>{`Toplam gösterilen siyah: ${displayedBlackCount}`}</Typography>
         <Typography>{`Doğru cevaplanan siyah: ${correctBlackSeen}`}</Typography>
         <Typography>{`Siyah olmadığı halde siyah denilen: ${wrongBlackSeen}`}</Typography>
