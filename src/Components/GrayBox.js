@@ -7,11 +7,11 @@ const GrayBox = () => {
       () => {
         setOn(!on);
       },
-      on ? 1500 : 500
+      on ? 2000 : 750
     );
 
     return () => {
-      setTimeout(timerId);
+      clearTimeout(timerId);
     };
   }, [on]);
 
@@ -19,7 +19,7 @@ const GrayBox = () => {
     <div
       className={on ? styles.gray : styles.white}
       style={{ width: 150, height: 150 }}
-    ></div>
+    />
   );
 };
 

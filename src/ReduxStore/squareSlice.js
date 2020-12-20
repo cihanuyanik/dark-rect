@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import GlobalTimer from "../GlobalTimer";
-import { randomInt, randomIntGauss } from "../utils";
+import { randomIntGauss } from "../utils";
 
 const getInitialState = () => {
   return {
@@ -37,6 +37,7 @@ export const squareSlice = createSlice({
       state.nextColor = "black";
       state.nextTime =
         GlobalTimer.instance().time() + randomIntGauss(5, 200, 3);
+      // state.nextTime = GlobalTimer.instance().time() + randomIntGauss(1, 5, 3);
 
       // state.nextTime = GlobalTimer.instance().time() + randomInt(20, 101);
     },
@@ -44,9 +45,9 @@ export const squareSlice = createSlice({
       state.color = "black";
       state.nextColor = "gray";
       const cTime = GlobalTimer.instance().time();
-      state.nextTime = cTime + 0.5;
+      state.nextTime = cTime + 0.75;
 
-      state.blackSeenResponseTimeRange = [cTime, cTime + 1.5];
+      state.blackSeenResponseTimeRange = [cTime, cTime + 2];
       state.totalDisplayedBlack++;
     },
 
